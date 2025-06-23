@@ -1,62 +1,249 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# Stagi.tn - Internship Management Platform
 
 <p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+  <img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel">
 </p>
 
-## About Laravel
+## About Stagi.tn
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Stagi.tn is a comprehensive internship management platform designed for the Tunisian market. It connects students, companies, and university supervisors to streamline the internship application and management process.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### Key Features
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- **Multi-User Platform**: Supports students, companies, university supervisors, and company supervisors
+- **Internship Management**: Post, browse, and manage internship opportunities
+- **Application System**: Complete application workflow with cover letters and attachments
+- **Real-time Communication**: Built-in messaging system between all user types
+- **Advanced Filtering**: Search internships by field, company, city, and keywords
+- **Dashboard Analytics**: Role-based dashboards with relevant statistics
+- **File Management**: Support for attachments in applications and messages
+- **Notification System**: Real-time notifications for important events
 
-## Learning Laravel
+### User Types
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+1. **Students** - Browse internships, apply with cover letters, track applications, communicate with companies
+2. **Companies** - Post internships, review applications, manage company supervisors, communicate with students
+3. **University Supervisors** - Oversee student progress, monitor applications, communicate with stakeholders
+4. **Company Supervisors** - Supervise specific internships, review applications, mentor students
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Tech Stack
 
-## Laravel Sponsors
+### Backend
+- **Laravel 8** - PHP web framework
+- **PHP 7.3+ or 8.0+** - Server-side language
+- **MySQL/PostgreSQL** - Database
+- **Laravel Sanctum** - API authentication
+- **Laravel Breeze** - Authentication scaffolding
+- **Pusher** - Real-time messaging and notifications
+- **Laravel Echo** - WebSocket client
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+### Frontend
+- **Vue.js 3** - Progressive JavaScript framework
+- **Inertia.js** - Modern monolith approach (SPA-like experience)
+- **Tailwind CSS** - Utility-first CSS framework
+- **Laravel Mix** - Asset compilation
+- **Vuex 4** - State management
+- **Axios** - HTTP client
 
-### Premium Partners
+## Prerequisites
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/)**
-- **[OP.GG](https://op.gg)**
+Before running this application, make sure you have the following installed:
+
+- **PHP 7.3+ or 8.0+** with extensions: BCMath, Ctype, JSON, Mbstring, OpenSSL, PDO, Tokenizer, XML
+- **Composer** - PHP dependency manager
+- **Node.js & NPM** - For frontend asset compilation
+- **MySQL/PostgreSQL** - Database server
+- **Pusher Account** - For real-time features (optional for development)
+
+## Installation & Setup
+
+### 1. Clone the Repository
+
+```bash
+git clone <repository-url>
+cd stagi.tn
+```
+
+### 2. Install PHP Dependencies
+
+```bash
+composer install
+```
+
+### 3. Install Node.js Dependencies
+
+```bash
+npm install
+```
+
+### 4. Environment Configuration
+
+```bash
+cp .env.example .env
+php artisan key:generate
+```
+
+Edit `.env` file with your database and Pusher credentials:
+
+```env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=stagi_tn
+DB_USERNAME=your_username
+DB_PASSWORD=your_password
+
+PUSHER_APP_ID=your_pusher_app_id
+PUSHER_APP_KEY=your_pusher_key
+PUSHER_APP_SECRET=your_pusher_secret
+PUSHER_APP_CLUSTER=your_pusher_cluster
+```
+
+### 5. Database Setup
+
+```bash
+php artisan migrate
+php artisan db:seed
+```
+
+### 6. Storage Setup
+
+```bash
+php artisan storage:link
+```
+
+### 7. Compile Frontend Assets
+
+For development:
+```bash
+npm run dev
+```
+
+For production:
+```bash
+npm run production
+```
+
+### 8. Start the Development Server
+
+```bash
+php artisan serve
+```
+
+The application will be available at `http://localhost:8000`
+
+## Development
+
+### Running Tests
+
+```bash
+php artisan test
+```
+
+### Code Quality
+
+```bash
+# Run PHP CS Fixer (if configured)
+./vendor/bin/php-cs-fixer fix
+
+# Run PHPStan (if configured)
+./vendor/bin/phpstan analyse
+```
+
+### Database
+
+```bash
+# Create a new migration
+php artisan make:migration create_table_name
+
+# Run migrations
+php artisan migrate
+
+# Rollback migrations
+php artisan migrate:rollback
+
+# Seed database
+php artisan db:seed
+```
+
+## Laravel Version Migration
+
+**Note**: This project is currently running on Laravel 8. Plans are in place to migrate to the latest Laravel version.
+
+### Migration Checklist
+
+When migrating to the latest Laravel version, consider the following:
+
+1. **Update Dependencies**
+   - Update Laravel framework version
+   - Update all packages to compatible versions
+   - Check for breaking changes in major dependencies
+
+2. **Code Updates**
+   - Review deprecated methods and classes
+   - Update middleware configurations
+   - Check for changes in authentication system
+   - Review route definitions
+
+3. **Frontend Updates**
+   - Update Inertia.js to latest version
+   - Update Vue.js and related packages
+   - Review asset compilation setup
+   - Update Tailwind CSS configuration
+
+4. **Database**
+   - Review migration files for compatibility
+   - Check for changes in Eloquent ORM
+   - Update model relationships if needed
+
+5. **Testing**
+   - Update test configurations
+   - Review test methods for compatibility
+   - Ensure all tests pass after migration
+
+## Project Structure
+
+```
+stagi.tn/
+├── app/
+│   ├── Http/Controllers/     # Application controllers
+│   ├── Models/              # Eloquent models
+│   ├── Policies/            # Authorization policies
+│   └── Notifications/       # Notification classes
+├── database/
+│   ├── migrations/          # Database migrations
+│   ├── seeders/            # Database seeders
+│   └── factories/          # Model factories
+├── resources/
+│   ├── js/
+│   │   ├── Pages/          # Vue page components
+│   │   ├── Components/     # Reusable Vue components
+│   │   └── Layouts/        # Page layouts
+│   └── css/               # Stylesheets
+├── routes/
+│   └── web.php            # Web routes
+└── tests/                 # Application tests
+```
 
 ## Contributing
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+This project is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+## Support
+
+For support and questions:
+- Create an issue in the repository
+- Contact the development team
+- Check the documentation in the `.cursor/rules/` directory
+
+---
+
+**Built with ❤️ for the Tunisian internship ecosystem**

@@ -21,7 +21,7 @@ class MessageReceived extends Notification
      */
     public function __construct(Message $message)
     {
-        $this->message = $message
+        $this->message = $message;
     }
 
     /**
@@ -46,7 +46,7 @@ class MessageReceived extends Notification
         return (new MailMessage)
 				->line($this->message->from->name . ' has sent you a message')
 				->line($this->message->text)
-				->action('View', url('/'))
+				->action('View', url('/'));
     }
 
     /**
@@ -57,8 +57,6 @@ class MessageReceived extends Notification
      */
     public function toArray($notifiable)
     {
-        return [
-            //
-        ];
+        return [];
     }
 }
